@@ -1,0 +1,104 @@
+.ui-datatable thead th, .ui-datatable tbody td, .ui-datatable tfoot td {
+    border-style: none;
+}
+.verde_claro {
+	background-color: #83ad00 !important;
+	color: #fff !important;
+}
+
+.verde_oscuro {
+	background-color: #050 !important;
+	color: #fff !important;
+}
+.dblock{
+	display: block !important;
+}
+
+.w100{
+	widows: 100% !important;
+}
+
+.text-bold{
+	font-weight: bold;
+}
+
+.ui-growl{
+	z-index: 1200 !important;
+}
+
+.ui-blockui-content{
+	top: 25% !important;
+}
+
+.img-loading{
+	width: 58px;
+}
+
+.ui-blockui-content.ui-widget.ui-widget-content.ui-corner-all.ui-helper-hidden.ui-shadow{
+	z-index: 1100 !important;
+}
+
+.ui-blockui.ui-widget-overlay.ui-helper-hidden{
+	z-index: 1100 !important;
+}
+.page-wrapper.toggled ~ .content{
+	left: 80px;
+}
+.ui-column-filter{
+	display: none !important;
+}
+
+.sectionTriangle {
+	width: 10px;
+	-ms-transform: rotate(225deg);
+	-webkit-transform: rotate(225deg);
+	transform: rotate(225deg);
+	border-left: 2px solid #fff;
+	border-top: 2px solid #fff;
+	margin-right: 15px;
+	float: right;
+	padding: 5px;
+	margin-left: 15px;
+}
+
+.sectionTriangle>polygon {
+	stroke-width: 3;
+}
+
+.solidFill {
+	fill: rgb(35, 191, 8);
+	stroke: rgb(35, 191, 8);
+}
+.titlePage{
+	font-family: "Roboto", "Helvetica Neue", Arial, sans-serif;
+    font-weight: normal;
+    color: #868ba1;
+}
+.conten-info .fa {
+	color: #0091dc;
+	border: solid 1px #00000047;
+	border-radius: 100%;
+	width: 29px;
+	height: 29px;
+	text-align: center;
+	align-items: center;
+	display: inline-grid;
+	font-size: 19px;
+}
+
+.conten-info span {
+	font-style: italic;
+	color: black;
+}
+
+.conten-info a {
+	text-decoration: none !important;
+}
+
+.conten-info {
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+	flex-direction: row-reverse;
+}
+

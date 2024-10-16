@@ -1,0 +1,120 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+  <h:head>
+   	<meta charset="utf-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   	<link rel="shortcut icon" href="#{request.contextPath}/resources/img/favicon.ico" type="image/x-icon"></link>
+    
+    <!-- styles -->
+	<link href="#{request.contextPath}/resources/css/bracket.css" rel="stylesheet" type="text/css" />
+	<link href="#{request.contextPath}/resources/css/font-awesome.min.css" rel="stylesheet" type="text/css" /> 
+	<link href="#{request.contextPath}/resources/css/styles.css" rel="stylesheet" type="text/css" />
+		
+
+    <!-- labels -->
+    <title>"Titulo"</title>
+    <ui:insert name="head"/>
+
+  </h:head>
+  <h:body id="bodyTemplate" class="#{headerFormBean.menuOpen ? 'collapsed-menu' : ''}">
+  	
+  	<div class="br-logo"><a href="../dashboard/dashboard.xhtml"><img src="#{request.contextPath}/resources/img/logocrz.png" width="200px"/></a></div>
+    <div class="br-sideleft overflow-y-auto">
+      <label class="sidebar-label pd-x-15 mg-t-20">Menú</label>
+      <div class="br-sideleft-menu">
+        <ui:repeat var="menu" value="#{headerFormBean.usuario.menu}">
+         	<p:fragment rendered="#{menu.tieneHijos}">
+	         	<a href="#" class="br-menu-link">
+		          <div class="br-menu-item">
+		            <i class="#{menu.icono} tx-24"></i>
+		            <span class="menu-item-label">#{menu.nombre}</span>
+		            <i class="menu-item-arrow fa fa-angle-down"></i>
+		          </div>
+		        </a>	         	
+		            <ul class="br-menu-sub nav flex-column">
+		            	<ui:repeat var="menu" value="#{menu.hijos}">
+						   <li class="nav-item">
+			                  <a href="#{menu.url}" class="nav-link">#{menu.nombre}</a>
+			               </li>
+					   	</ui:repeat>
+			        </ul>		            
+	   	    </p:fragment>
+		  
+	   	  	<p:fragment rendered="#{not menu.tieneHijos}">                
+                 <a href="#{menu.url}" class="br-menu-link">
+			         <div class="br-menu-item">
+			            <i class="#{menu.icono} tx-20"></i>
+			            <span class="menu-item-label">#{menu.nombre}</span>
+			         </div>
+		          </a>
+             </p:fragment>
+          
+	   </ui:repeat>        
+      </div>
+
+      <br></br>
+    </div>
+  
+    <div class="br-header">
+      <div class="br-header-left">
+      
+        <div class="navicon-left hidden-md-down">
+        	<p:commandLink id="btnLeftMenu" actionListener="#{headerFormBean.openMenu()}" ajax="true" styleClass="navbar-brand"><i class="fa fa-bars"></i></p:commandLink>
+        </div>
+        <div class="navicon-left hidden-lg-up">
+        	<p:commandLink id="btnLeftMenuMobile" actionListener="#{headerFormBean.openMenu()}" ajax="true" styleClass="navbar-brand"><i class="fa fa-bars"></i></p:commandLink>
+        </div>
+        
+      </div>
+      <div class="br-header-right">
+        <nav class="nav">
+          	<div class="dropdown">
+	            <a href="" class="nav-link nav-link-profile" data-toggle="dropdown">
+	              	<span class="logged-name">#{headerFormBean.usuario.nombreCompleto}</span><br/>
+	              	<small class="rol-user">#{headerFormBean.usuario.usuarioAplicacion.rolAplicacion.rol.nombreRol} - #{headerFormBean.nombreSitio()}</small>
+	              	
+	              		<svg viewBox="0 0 10 10" preserveAspectRatio="none" class="sectionTriangle">
+  							<polygon class="solidFill" points="0,0 10,0 0,10"></polygon>
+						</svg>
+					
+	            </a>
+	            <div class="dropdown-menu wd-200">
+		            <h:form>
+		              	<ul class="list-unstyled user-profile-nav">
+		                	<li>
+		                		<p:commandLink styleClass="cerrar-sesion" actionListener="#{headerFormBean.cerrarSesion}" ajax="true">
+					        		<span>Sign out </span><i class="fa fa-power-off"></i>
+					      		</p:commandLink>
+		                	</li>
+		              	</ul>
+	              	</h:form>
+	            </div>
+          	</div>          
+        </nav>       
+      </div>
+    </div>
+		
+		<div class="br-mainpanel">    
+	   		<main class="page-content">   		
+		         <ui:insert name="body"/>
+		   	</main>	    
+	    </div>
+    
+    	<!-- scripts -->
+	
+		<script src="#{request.contextPath}/resources/js/bootstrap.min.js"></script>
+		<script src="#{request.contextPath}/resources/js/perfect-scrollbar.jquery.js"></script>
+		<script src="#{request.contextPath}/resources/js/moment.js"></script>
+	
+		<script src="#{request.contextPath}/resources/js/bracket.js"></script>
+    
+  </h:body>
+	
+</html>
+
